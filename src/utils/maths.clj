@@ -1,5 +1,5 @@
 
-(require '[clojure.string :as str])
+(ns utils.maths)
 
 
 (defn is-prime
@@ -18,13 +18,3 @@
         false
         true
         ))))
-
-(println
- (str/join ["The sum of all prime numbers below 2000000: "
-           (->>
-            (for [i (range 0 2000000) :when (is-prime i)] i)
-            (reduce +)
-            str)
-            "."]
- )
-)

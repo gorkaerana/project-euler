@@ -1,0 +1,6 @@
+# Emacs autosave and recovery files
+*~
+\#*
+
+target/**/*
+.lein-repl-history
