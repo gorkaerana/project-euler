@@ -18,3 +18,10 @@
         false
         true
         ))))
+
+(defn divisors [n]
+  (concat
+   (for [i (range 1 (inc (quot n 2))) :when (== (mod n i) 0)] i)
+   [n]
+   )
+  )
