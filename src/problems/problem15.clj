@@ -10,17 +10,22 @@
     )
   )
 
-(defn traverse-lattice [paths x y N]
+(defn traverse-lattice [n-paths x y N]
   (for [[x1 y1] (concat (next-horizontal-step x y N) (next-vertical-step x y N))]
     (if (and (= x1 N) (= y1 N))
-      (into [] (concat paths [[x1 y1]]))
-      (traverse-lattice (concat paths [[x1 y1]]) x1 y1 N)
+      (inc n-paths)
+      (traverse-lattice n-paths x1 y1 N)
       )
     )
   )
 
-(def lattice-size 2)
+(def lattice-size 20)
 
-(def solution)
-
-(println (traverse-lattice [] 0 0 lattice-size))
+(println
+ (->>
+  lattice-size
+  (traverse-lattice 0 0 0)
+  flatten
+  (reduce +)
+  )
+)
